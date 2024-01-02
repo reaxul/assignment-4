@@ -6,6 +6,30 @@ const createUserIntoDB = async (user: IUser) => {
     return newUser;
 }
 
+const getAllUsersFromDB = async () => {
+    const users = await User.find();
+    return users;
+};
+
+const getUserByIdFromDB = async (id: string) => {
+    const user = await User.findById(id);
+    return user;
+};
+
+const updateUserByIdFromDB = async (id: string, user: IUser) => {
+    const updateUser = await User.findByIdAndUpdate(id, user, { new: true });
+    return updateUser;
+};
+
+const deleteUserByIdFromDB = async (id: string) => {
+    const deleteUser = await User.findByIdAndDelete(id);
+    return deleteUser;
+};
+
 export const UserServices = {
     createUserIntoDB,
+    getAllUsersFromDB,
+    getUserByIdFromDB,
+    updateUserByIdFromDB,
+    deleteUserByIdFromDB,
 }
